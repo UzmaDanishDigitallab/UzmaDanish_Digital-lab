@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Uzma Danish AI Labs</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uzma Danish | Official Store &amp; Digital Lab</title>
+  <script src="https://gumroad.com/js/gumroad.js"></script>
   <style>
     :root {
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --border: #334155;
+      --bg: #0a0e17;
+      --card: #131b2e;
+      --card-hover: #1a253f;
       --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --primary: #38bdf8;
-      --primary-hover: #0284c7;
-      --accent: #a855f7;
-      --btn-text: #0f172a;
+      --subtext: #94a3b8;
+      --gold: #f59e0b;
+      --gold-glow: rgba(245, 158, 11, 0.15);
+      --border: #1e293b;
+      --btn-bg: #f59e0b;
+      --btn-text: #0a0e17;
     }
 
     @media (prefers-color-scheme: light) {
       :root {
         --bg: #f8fafc;
-        --surface: #ffffff;
-        --border: #e2e8f0;
+        --card: #ffffff;
+        --card-hover: #f1f5f9;
         --text: #0f172a;
-        --text-muted: #64748b;
-        --primary: #0284c7;
-        --primary-hover: #0369a1;
-        --accent: #9333ea;
+        --subtext: #64748b;
+        --gold: #d97706;
+        --gold-glow: rgba(217, 119, 6, 0.12);
+        --border: #e2e8f0;
+        --btn-bg: #0f172a;
         --btn-text: #ffffff;
       }
     }
@@ -35,7 +38,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     body {
@@ -43,215 +46,288 @@
       color: var(--text);
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2.5rem 1.25rem;
-      line-height: 1.6;
+      justify-content: center;
+      padding: 2.5rem 1rem;
+      line-height: 1.5;
     }
 
     .container {
-      width: 100%;
       max-width: 680px;
+      width: 100%;
       display: flex;
       flex-direction: column;
       gap: 2rem;
     }
 
-    /* Profile Header */
+    /* Header */
     .header {
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
     }
 
-    .badge {
+    .author-badge {
+      display: inline-block;
       font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
       font-weight: 700;
-      padding: 0.3rem 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
       border-radius: 9999px;
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--primary);
+      background: var(--gold-glow);
+      color: var(--gold);
       border: 1px solid var(--border);
+      margin-bottom: 0.75rem;
     }
 
     h1 {
-      font-size: 2.25rem;
+      font-size: 2.2rem;
       font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-
-    .bio {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 520px;
-    }
-
-    /* Product Grid / Cards */
-    .card-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .card {
-      background-color: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.25rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .card:hover {
-      border-color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    .card-info h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .card-info p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .card-action {
-      font-weight: 600;
-      color: var(--primary);
-      font-size: 0.95rem;
-      white-space: nowrap;
-      margin-left: 1rem;
-    }
-
-    /* Email Follow Section */
-    .subscribe-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.75rem;
-      text-align: center;
-    }
-
-    .subscribe-box h2 {
-      font-size: 1.25rem;
+      letter-spacing: -0.02em;
       margin-bottom: 0.5rem;
     }
 
-    .subscribe-box p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      margin-bottom: 1.25rem;
+    .tagline {
+      color: var(--subtext);
+      font-size: 1.02rem;
+      max-width: 540px;
+      margin: 0 auto;
     }
 
-    .subscribe-form {
+    /* Products Section */
+    .books-grid {
       display: flex;
-      gap: 0.5rem;
       flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .book-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .book-card:hover {
+      border-color: var(--gold);
+      background: var(--card-hover);
+      transform: translateY(-2px);
+    }
+
+    .edition-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .book-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 0.2rem 0;
+    }
+
+    .book-desc {
+      color: var(--subtext);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .features-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      color: var(--subtext);
+    }
+
+    .buy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 0.8rem 1.25rem;
+      border-radius: 10px;
+      margin-top: 0.25rem;
+      transition: opacity 0.2s;
+    }
+
+    .buy-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Newsletter Card */
+    .newsletter-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+    }
+
+    .newsletter-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .newsletter-card p {
+      color: var(--subtext);
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    form[data-gumroad-follow] {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
     @media (min-width: 480px) {
-      .subscribe-form {
+      form[data-gumroad-follow] {
         flex-direction: row;
       }
     }
 
-    .subscribe-form input[type="email"] {
+    form[data-gumroad-follow] input[type="email"] {
       flex: 1;
-      padding: 0.75rem 1rem;
+      padding: 0.8rem 1rem;
       border-radius: 8px;
       border: 1px solid var(--border);
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--text);
       font-size: 0.95rem;
       outline: none;
     }
 
-    .subscribe-form input[type="email"]:focus {
-      border-color: var(--primary);
+    form[data-gumroad-follow] input[type="email"]:focus {
+      border-color: var(--gold);
     }
 
-    .subscribe-form button {
-      padding: 0.75rem 1.4rem;
+    form[data-gumroad-follow] button {
+      padding: 0.8rem 1.5rem;
       border-radius: 8px;
       border: none;
-      background-color: var(--primary);
-      color: var(--btn-text);
+      background: var(--gold);
+      color: #0a0e17;
       font-weight: 700;
       font-size: 0.95rem;
       cursor: pointer;
-      transition: background 0.2s;
     }
 
-    .subscribe-form button:hover {
-      background-color: var(--primary-hover);
-    }
-
-    .follow-message {
+    div[data-gumroad-follow-message] {
       margin-top: 0.75rem;
-      font-size: 0.88rem;
-      color: var(--primary);
+      font-size: 0.85rem;
+      color: var(--gold);
       min-height: 1.2rem;
     }
 
     footer {
       text-align: center;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      margin-top: 2rem;
+      color: var(--subtext);
+      font-size: 0.82rem;
+      padding-top: 0.5rem;
     }
   </style>
 </head>
 <body>
   <main class="container">
     <header class="header">
-      <span class="badge">Research &amp; Engineering</span>
-      <h1>Uzma Danish AI Labs</h1>
-      <p class="bio">
-        Exploring autonomous systems, predictive models, and practical AI toolkits. Get early access to research drops, workflows, and prompts.
-      </p>
+      <span class="author-badge">Author &amp; Lead Architect</span>
+      <h1>Uzma Danish</h1>
+      <p class="tagline">Build systems. Make better decisions. Achieve extraordinary results with cutting-edge executive guides &amp; blueprints.</p>
     </header>
 
-    <section class="card-list">
-      <a class="card" href="https://uzmadanishailabs.gumroad.com" target="_blank" rel="noopener">
-        <div class="card-info">
-          <h3>Full Store Catalog</h3>
-          <p>Browse all released models, datasets, and automation guides.</p>
+    <section class="books-grid">
+      <!-- Book 1 -->
+      <article class="book-card">
+        <div>
+          <span class="edition-tag">Master Executive Edition • 2026</span>
+          <h2 class="book-title">The AI Superhuman Advantage</h2>
+          <p class="book-desc">
+            Master Advanced Mental Frameworks, Multi-Tier Prompting, Strategic Decision Making, and Automated Executive Workflows to 10x your daily output.
+          </p>
+          <div class="features-list">
+            <span class="pill">20+ Executive Prompts</span>
+            <span class="pill">5 Deep Mastery Modules</span>
+            <span class="pill">C.R.A.F.T. Standard</span>
+            <span class="pill">14-Day Action Drill</span>
+          </div>
         </div>
-        <span class="card-action">Visit Store &rarr;</span>
-      </a>
+        <a class="buy-btn" href="https://uzmadanishdigitallab.gumroad.com" target="_blank" rel="noopener">
+          Get Instant Access &rarr;
+        </a>
+      </article>
+
+      <!-- Book 2 -->
+      <article class="book-card">
+        <div>
+          <span class="edition-tag">Advanced Master Edition • 2026</span>
+          <h2 class="book-title">AI Power Architect</h2>
+          <p class="book-desc">
+            The advanced playbook for high-performance prompting, autonomous workflow automation, and structured corporate decision engineering.
+          </p>
+          <div class="features-list">
+            <span class="pill">Automation Blueprints</span>
+            <span class="pill">Decision-Making Systems</span>
+            <span class="pill">High-Performance Workflows</span>
+          </div>
+        </div>
+        <a class="buy-btn" href="https://uzmadanishdigitallab.gumroad.com" target="_blank" rel="noopener">
+          Get Instant Access &rarr;
+        </a>
+      </article>
+
+      <!-- Book 3 -->
+      <article class="book-card">
+        <div>
+          <span class="edition-tag">Complete Master Guide</span>
+          <h2 class="book-title">Crypto Trading: Beginner to Master</h2>
+          <p class="book-desc">
+            From candlestick psychology to automated risk management and spot/futures strategy execution. Build disciplined, data-driven crypto profitability.
+          </p>
+          <div class="features-list">
+            <span class="pill">Candlestick Formations</span>
+            <span class="pill">Risk Management Blueprint</span>
+            <span class="pill">Market Structure Strategy</span>
+          </div>
+        </div>
+        <a class="buy-btn" href="https://uzmadanishdigitallab.gumroad.com" target="_blank" rel="noopener">
+          Get Instant Access &rarr;
+        </a>
+      </article>
     </section>
 
-    <!-- Gumroad Follow Section -->
-    <section class="subscribe-box">
-      <h2>Stay Updated</h2>
-      <p>Subscribe for updates on future releases and early preview drops.</p>
-
-      <form data-gumroad-follow class="subscribe-form">
-        <input 
-          type="email" 
-          name="email" 
-          placeholder="Enter your email address" 
-          required 
-        />
-        <button type="submit">Join</button>
+    <!-- Email Follow Section -->
+    <section class="newsletter-card">
+      <h3>Join the Executive Circle</h3>
+      <p>Subscribe for future drops, exclusive AI prompts vault, and member-only release updates.</p>
+      
+      <form data-gumroad-follow>
+        <input type="email" name="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe</button>
       </form>
-
-      <div data-gumroad-follow-message class="follow-message"></div>
+      
+      <div data-gumroad-follow-message></div>
     </section>
 
     <footer>
-      &copy; Uzma Danish AI Labs &bull; Powered by Gumroad
+      &copy; Uzma Danish Digital Lab &bull; Powered by Gumroad
     </footer>
   </main>
 </body>
